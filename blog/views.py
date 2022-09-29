@@ -23,9 +23,10 @@ class HomePage(ListView):
         search = self.request.GET.get('search', None)
         tag = self.request.GET.get('tag', None)
         category = self.request.GET.get('category', None)
+        author = self.request.GET.get('author', None)
+        queryset = queryset.annotate(
+            full_name=Concat('author__user__first_name', V(' '), 'author__user__last_name'))
         if search is not None:
-            queryset = queryset.annotate(
-                full_name=Concat('author__user__first_name', V(' '), 'author__user__last_name'))
             if search != "":
                 queryset = queryset.filter(
                     Q(title__icontains=search) | Q(tags__name__icontains=search) | Q(content__icontains=search) | Q(
@@ -37,6 +38,10 @@ class HomePage(ListView):
         if category is not None:
             if category != "":
                 queryset = queryset.filter(category__slug=category)
+
+        if author is not None:
+            if author != "":
+                queryset = queryset.filter(full_name=author)
 
         return queryset.distinct()
 
