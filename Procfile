@@ -1,0 +1,1 @@
+web: gunicorn blog2022.wsgi --log-file -
