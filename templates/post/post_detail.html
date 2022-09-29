@@ -19,8 +19,10 @@
 
                             <div class="blog-meta big-meta">
                                 <small><a title="Oluşturulma tarihi">{{ object.created_at | date }}</a></small>
-                                <small><a title="Yazar">by {{ object.author }}</a></small>
-                                <small><a title="Okunma sayısı"><i class="fa fa-eye"></i> {{ post.get_hit_count }}</a></small>
+                                <small><a href="{% url 'home' %}?author={{ object.author }}"
+                                          title="Yazar">by {{ object.author }}</a></small>
+                                <small><a title="Okunma sayısı"><i class="fa fa-eye"></i> {{ post.get_hit_count }}
+                                </a></small>
                             </div><!-- end meta -->
 
                             {% include 'partials/social_share.html' %}
@@ -68,7 +70,8 @@
                                 </div><!-- end col -->
 
                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                                    <h4><a>{{ object.author }}</a></h4>
+                                    <h4><a href="{% url 'home' %}?author=
+                                            {{ object.author }}">{{ object.author }}</a></h4>
                                     <p>{{ object.author.about }}</p>
 
                                     <div class="topsocial">
