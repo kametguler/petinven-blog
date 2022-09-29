@@ -8,7 +8,7 @@ ALLOWED_HOSTS = ["petinven.herokuapp.com"]
 SECRET_KEY = 'django-insecure-#sfr+%sg#mxffpue$m-3q(c-a1bakqh^ko!qglc0q@rn31qe)p'
 
 META_SITE_PROTOCOL = 'https'
-META_SITE_DOMAIN = "petinven.com"
+META_SITE_DOMAIN = "petinven.herokuapp.com"
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
