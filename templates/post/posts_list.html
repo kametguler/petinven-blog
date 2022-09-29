@@ -1,0 +1,42 @@
+{% load static %}
+<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+    <div class="page-wrapper">
+        <div class="blog-custom-build">
+            {% if post_list %}
+                {% for post in post_list %}
+                    <div class="blog-box wow fadeIn">
+                        <div class="post-media">
+                            <div>
+                                <img src="{{ post.get_meta_image }}" alt="" class="img-fluid">
+                                <div class="hovereffect">
+                                    <span></span>
+                                </div>
+                                <!-- end hover -->
+                            </div>
+                        </div>
+                        <!-- end media -->
+                        <div class="blog-meta big-meta text-center">
+                            {% include 'partials/social_share.html' %}
+                            <h4><a href="{{ post.get_detailed_url }}" title="">{{ post.title }}</a></h4>
+                            <p>{{ post.content | truncatechars:250 | safe }}</p>
+                            <small><a href="{% url 'home' %}?category={{ post.category.slug }}"
+                                      title="">{{ post.category }}</a></small>
+                            <small><a title="Oluşturulma tarihi">{{ post.created_at | date }}</a></small>
+                            <small><a title="Yazar">by {{ post.author }}</a></small>
+                            <small><a title="Okunma sayısı"><i class="fa fa-eye"></i> {{ post.get_hit_count }}</a></small>
+                        </div><!-- end meta -->
+                    </div><!-- end blog-box -->
+
+                    <hr class="invis">
+                {% endfor %}
+            {% else %}
+                <p>Aramanızla eşleşen herhangi bir post bulunamadı!</p>
+                <a href="{% url 'home' %}" class="btn btn-outline-info">Geri dön.</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <hr class="invis">
+
+    {% include 'partials/pagination.html' %}
+</div><!-- end col -->

@@ -1,0 +1,153 @@
+{% extends 'partials/layout.html' %}
+{% load static %}
+{% block content %}
+    <section class="section lb m3rem">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-wrapper">
+                        <div class="blog-title-area">
+                            <ol class="breadcrumb hidden-xs-down">
+                                <li class="breadcrumb-item"><a href="{% url 'home' %}">Blog</a></li>
+                                <li class="breadcrumb-item active">{{ object.title }}</li>
+                            </ol>
+
+                            <span class="color-yellow"><a href="{% url 'home' %}?category={{ object.category.slug }}"
+                                                          title="">{{ object.category }}</a></span>
+
+                            <h3>{{ object.title }}</h3>
+
+                            <div class="blog-meta big-meta">
+                                <small><a title="Oluşturulma tarihi">{{ object.created_at | date }}</a></small>
+                                <small><a title="Yazar">by {{ object.author }}</a></small>
+                                <small><a title="Okunma sayısı"><i class="fa fa-eye"></i> {{ post.get_hit_count }}</a></small>
+                            </div><!-- end meta -->
+
+                            {% include 'partials/social_share.html' %}
+                        </div><!-- end title -->
+
+                        <div class="single-post-media">
+                            <img src="{{ object.get_meta_image }}" alt="" class="img-fluid">
+                        </div><!-- end media -->
+
+                        <div class="blog-content">
+                            <div class="pp">
+                                {{ object.content | safe }}
+
+                            </div><!-- end pp -->
+
+                        </div><!-- end content -->
+
+                        <div class="blog-title-area">
+                            <div class="tag-cloud-single">
+                                <span>Etiketler</span>
+                                {% for tag in post.tags.all %}
+                                    <small><a href="{% url 'home' %}?tag={{ tag.slug }}"
+                                              title="">{{ tag }}</a></small>
+                                {% endfor %}
+
+
+                            </div><!-- end meta -->
+
+                            {% include 'partials/social_share.html' %}
+                        </div><!-- end title -->
+
+                        <hr class="invis1">
+
+                        <div class="custombox authorbox clearfix">
+                            <h4 class="small-title">Yazar Hakkında</h4>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    {% if object.author.profile_photo %}
+                                        <img src="{{ object.author.get_profile_image }}" alt=""
+                                             class="img-fluid rounded-circle">
+                                    {% else %}
+                                        <img src="{% url 'profiles/avatar.png' %}" alt=""
+                                             class="img-fluid rounded-circle">
+                                    {% endif %}
+                                </div><!-- end col -->
+
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                    <h4><a>{{ object.author }}</a></h4>
+                                    <p>{{ object.author.about }}</p>
+
+                                    <div class="topsocial">
+                                        {% if object.author.facebook %}
+                                            <a href="{{ object.author.facebook }}" target="_blank" data-toggle="tooltip"
+                                               data-placement="bottom"
+                                               title="Facebook"><i
+                                                    class="fa fa-facebook"></i></a>
+                                        {% endif %}
+                                        {% if object.author.youtube %}
+                                            <a href="{{ object.author.youtube }}" data-toggle="tooltip"
+                                               data-placement="bottom"
+                                               title="Youtube" target="_blank"><i
+                                                    class="fa fa-youtube"></i></a>
+                                        {% endif %}
+                                        {% if object.author.twitter %}
+                                            <a href="{{ object.author.twitter }}" data-toggle="tooltip"
+                                               data-placement="bottom"
+                                               title="Twitter" target="_blank"><i
+                                                    class="fa fa-twitter"></i></a>
+                                        {% endif %}
+                                        {% if object.author.instagram %}
+                                            <a href="{{ object.author.instagram }}" data-toggle="tooltip"
+                                               data-placement="bottom"
+                                               title="Instagram" target="_blank"><i
+                                                    class="fa fa-instagram"></i></a>
+                                        {% endif %}
+                                        {% if object.author.website %}
+                                            <a href="{{ object.author.website }}" data-toggle="tooltip" target="_blank"
+                                               data-placement="bottom"
+                                               title="Website"><i
+                                                    class="fa fa-link"></i></a>
+                                        {% endif %}
+
+                                    </div><!-- end social -->
+
+                                </div><!-- end col -->
+                            </div><!-- end row -->
+                        </div><!-- end author-box -->
+
+                        <hr class="invis1">
+
+                        <div class="custombox clearfix">
+                            <h4 class="small-title">İlginizi çekebilir</h4>
+                            <div class="row">
+                                {% for also in also_like %}
+                                    <div class="col-lg-6">
+                                        <div class="blog-box">
+                                            <div class="post-media">
+                                                <a href="{{ also.title }}" title="">
+                                                    <img src="{{ also.get_meta_image }}" alt="" class="img-fluid">
+                                                    <div class="hovereffect">
+                                                        <span class=""></span>
+                                                    </div><!-- end hover -->
+                                                </a>
+                                            </div><!-- end media -->
+                                            <div class="blog-meta">
+                                                <h4><a href="{{ also.get_detailed_url }}" title="">{{ also.title }}</a>
+                                                </h4>
+                                                <small><a href="{% url 'home' %}?category={{ also.category.slug }}"
+                                                          title="Kategorisi">{{ also.category }}</a></small>
+                                                <small><a
+                                                        title="Oluşturulma tarihi">{{ also.created_at | date }}</a></small>
+                                            </div><!-- end meta -->
+                                        </div><!-- end blog-box -->
+                                    </div><!-- end col -->
+                                {% endfor %}
+
+                            </div><!-- end row -->
+                        </div><!-- end custom-box -->
+
+                        <hr class="invis1">
+
+                        {% include 'comment/comments.html' with url=object.slug %}
+
+                    </div><!-- end page-wrapper -->
+                </div><!-- end col -->
+                {% include 'sidebar/sidebar.html' %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

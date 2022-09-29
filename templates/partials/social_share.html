@@ -1,0 +1,31 @@
+<div class="post-sharing">
+    <ul class="list-inline">
+        <li>
+            {% if post %}
+                <a href="{{ post.get_facebook_intent }}?u={{ request.build_absolute_uri }}{{ post.slug }}"
+                   class="fb-button btn btn-primary" target="_blank"
+                   data-show-count="false"><i class="fa fa-facebook"></i><span
+                        class="down-mobile ml-0">Facebook'ta paylaş</span></a>
+            {% else %}
+                <a target="_blank" href="{{ post.get_facebook_intent }}&url={{ request.build_absolute_uri }}"
+                   class="fb-button btn btn-primary"
+                   data-show-count="false"><i class="fa fa-facebook"></i><span
+                        class="down-mobile ml-0">Facebook'ta paylaş</span></a>
+            {% endif %}
+        </li>
+        <li>
+            {% if post %}
+                <a target="_blank"
+                   href="{{ post.get_tweet_intent }}&url={{ request.build_absolute_uri }}{{ post.slug }}"
+                   class="tw-button btn btn-primary"
+                   data-show-count="false"><i class="fa fa-twitter"></i><span
+                        class="down-mobile ml-0">Twitter'da paylaş</span></a>
+            {% else %}
+                <a target="_blank" href="{{ post.get_tweet_intent }}&url={{ request.build_absolute_uri }}"
+                   class="tw-button btn btn-primary"
+                   data-show-count="false"><i class="fa fa-twitter"></i><span
+                        class="down-mobile ml-0">Twitter'da paylaş</span></a>
+            {% endif %}
+        </li>
+    </ul>
+</div><!-- end post-sharing -->

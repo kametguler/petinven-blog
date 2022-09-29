@@ -1,0 +1,77 @@
+{% extends 'partials/layout.html' %}
+
+{% block content %}
+    <section class="section lb mt-lg-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-wrapper">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4>Biz Kimiz ?</h4>
+                                <p>İnsanlara spesifik, konulardan bağımsız bildiklerini paylaşmayı amaçlayan yazarların
+                                    bir arada olduğu bir Blogger topluluğuyuz</p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <h4>Yazarımız Olmak İster Misin?</h4>
+                                <p>Eğer sen de insanlara bir şeyler katmayı amaçlıyorsan, bildiklerini paylaşmak için
+                                    bizimle aşağıdaki iletişim formunu doldurarak iletişime geçebilirsin!</p>
+                            </div>
+                        </div><!-- end row -->
+
+                        <hr class="invis">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form class="form-wrapper" method="POST">
+                                    {% csrf_token %}
+                                    <h4>Bize Ulaşın!</h4>
+                                    {% for message in messages %}
+                                        {% if 'success' in message.tags %}
+                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                {{ message }}
+                                                <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if form.errors.name %}
+                                        {{ form.errors.name }}
+                                    {% endif %}
+                                    <input type="text" class="form-control" placeholder="Adınız"
+                                           name="{{ form.name.name }}">
+                                    {% if form.errors.email %}
+                                        {{ form.errors.email }}
+                                    {% endif %}
+                                    <input type="text" class="form-control" placeholder="Email adresiniz"
+                                           name="{{ form.email.name }}">
+                                    {% if form.errors.phone %}
+                                        {{ form.errors.phone }}
+                                    {% endif %}
+                                    <input type="text" class="form-control" placeholder="Telefon Numaranız"
+                                           name="{{ form.phone.name }}">
+                                    {% if form.errors.topic %}
+                                        {{ form.errors.topic }}
+                                    {% endif %}
+                                    <input type="text" class="form-control" placeholder="Konu"
+                                           name="{{ form.topic.name }}">
+                                    {% if form.errors.message %}
+                                        {{ form.errors.message }}
+                                    {% endif %}
+                                    <textarea class="form-control" placeholder="Mesajınız"
+                                              name="{{ form.message.name }}"></textarea>
+                                    <button type="submit" class="btn btn-primary">Gönder <i
+                                            class="fa fa-envelope-open-o"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- end page-wrapper -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section>
+{% endblock %}

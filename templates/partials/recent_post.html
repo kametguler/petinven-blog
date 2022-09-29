@@ -1,0 +1,11 @@
+{% for recent_post in recent_posts %}
+    <a href="{{ recent_post.get_detailed_url }}"
+       class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="w-100 justify-content-between">
+            <img src="{{ recent_post.get_meta_image }}" alt="" class="img-fluid float-left">
+            <h5 class="mb-1">{{ recent_post.title }}</h5>
+            <small class="mb-2 mt-0">{{ recent_post.created_at | date }}</small>
+        </div>
+    </a>
+{% endfor %}
+

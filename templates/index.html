@@ -1,0 +1,27 @@
+{% extends 'partials/layout.html' %}
+
+{% block content %}
+    <section id="cta" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 align-self-center">
+                    <h2>Meraklı ol!</h2>
+                    <p class="lead w-50"> Herhangi bir konuda yazarların hikayelerini, düşüncelerini ve uzmanlıklarını
+                        keşfedin.</p>
+                    <a href="#post_list" class="btn btn-primary">Okumaya başlayın</a>
+                </div>
+                {% include 'email/subscription_form.html' %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section lb" id="post_list">
+        <div class="container">
+            <div class="row">
+                {% include 'post/posts_list.html' %}
+                {% include 'sidebar/sidebar.html' %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

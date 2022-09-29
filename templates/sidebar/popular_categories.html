@@ -1,0 +1,10 @@
+<div class="widget">
+    <h2 class="widget-title">Popüler Kategoriler</h2>
+    <div class="link-widget">
+        <ul>
+            {% for popular_category in popular_categories %}
+                <li><a href="?category={{ popular_category.slug }}">{{ popular_category }} <span>({{ popular_category.posts_count }})</span></a></li>
+            {% endfor %}
+        </ul>
+    </div><!-- end link-widget -->
+</div><!-- end widget -->

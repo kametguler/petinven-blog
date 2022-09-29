@@ -1,0 +1,48 @@
+{% load static %}
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            {% include 'sidebar/recent_posts.html' %}
+
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                <div class="widget">
+                    <h2 class="widget-title">Popüler Postlar</h2>
+                    <div class="blog-list-widget">
+                        <div class="list-group">
+                            {% for popular_post in popular_posts %}
+                                <a href="#"
+                                   class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="w-100 justify-content-between">
+                                        <img src="{{ popular_post.get_meta_image }}" alt=""
+                                             class="img-fluid float-left">
+                                        <h5 class="mb-1">{{ popular_post.title }}</h5>
+                                        <small class="mb-2 mt-0">{{ popular_post.created_at | date }}</small>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- end blog-list -->
+                </div><!-- end widget -->
+            </div><!-- end col -->
+
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                {% include 'sidebar/popular_categories.html' %}
+            </div><!-- end col -->
+        </div><!-- end row -->
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <br>
+                <br>
+                <div class="copyright">&copy;
+                    <script>document.write(/\d{4}/.exec(Date())[0])</script>
+                    Petinven. Design: <a href="https://kamet-guler.herokuapp.com">Kamet
+                        Güler</a>.
+                </div>
+            </div>
+        </div>
+    </div><!-- end container -->
+</footer><!-- end footer -->
+
+<div class="dmtop">Yukarı Çık</div>

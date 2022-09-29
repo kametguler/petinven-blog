@@ -1,0 +1,16 @@
+<div class="col-lg-4 col-md-12">
+    <div class="newsletter-widget text-center align-self-center">
+        <h3>Abone Ol!</h3>
+        <p>Haftalık Bültenimize abone olun ve güncellemeleri e-posta yoluyla alın.</p>
+        <div class="alert alert-dismissible fade show d-none" id="subs_message" role="alert">
+
+        </div>
+        <form class="form-inline" method="post">
+            {% csrf_token %}
+            <input type="email" id="email_subs" name="email" placeholder="Email adresinizi girin.."
+                   required
+                   class="form-control"/>
+            <input type="submit" id="btnSubmit" value="Abone olun" class="btn btn-default btn-block"/>
+        </form>
+    </div>
+</div>
