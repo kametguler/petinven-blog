@@ -133,6 +133,9 @@ class Post(ModelMeta, models.Model):
     def get_detailed_url(self):
         return reverse('post-detail', kwargs={'slug': self.slug})
 
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'slug': self.slug})
+
     @property
     def get_hit_count(self):
         return HitCount.objects.filter(post=self).count()
