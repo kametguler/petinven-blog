@@ -1,0 +1,17 @@
+{% extends 'partials/layout.html' %}
+
+{% block content %}
+    <section class="section lb" id="post_list">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-wrapper text-center">
+                        <h1 style="font-size: 150px;">404</h1>
+                        <h2>Üzgünüz, Aramaya çalıştığınız sayfa bulunamadı!</h2>
+                        <a href="{% url 'home' %}" class="btn btn-primary align-items-center">Anasayfa'ya dön.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
