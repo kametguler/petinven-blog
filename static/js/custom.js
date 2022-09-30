@@ -78,7 +78,7 @@ $("#btnSubmit").click(function (e) {
     var csrfToken = $('input[name=csrfmiddlewaretoken]').val()
     var subs_message = $("#subs_message")
     $.ajax({
-        url: 'http://localhost:8000/newsletter-activation/',
+        url: 'https://petinven.herokuapp.com/newsletter-activation/',
         method: 'post',
         cache: false,
         data: {
