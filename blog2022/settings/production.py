@@ -8,7 +8,7 @@ ALLOWED_HOSTS = ["petinven.herokuapp.com"]
 
 SECRET_KEY = 'django-insecure-#sfr+%sg#mxffpue$m-3q(c-a1bakqh^ko!qglc0q@rn31qe)p'
 
-INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps', 'storages', 'django_q', ]
+INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps', 'storages', ]
 
 META_SITE_PROTOCOL = 'https'
 META_SITE_DOMAIN = "petinven.herokuapp.com"
@@ -35,20 +35,3 @@ MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 SITE_ID = 1
 
 TEMPLATES[0]["OPTIONS"]["context_processors"].append("blog2022.context_processors.export_vars")
-
-Q_CLUSTER = {
-    'name': 'blog2022',
-    'workers': 8,
-    'recycle': 500,
-    'timeout': 60,
-    'compress': True,
-    'save_limit': 250,
-    'queue_limit': 500,
-    'cpu_affinity': 1,
-    'label': 'Django Q',
-    'redis': {
-        'host': os.environ.get('REDIS_HOST'),
-        'password': os.environ.get('REDIS_PASSWORD'),
-        'port': os.environ.get('REDIS_PORT'),
-        'db': 0, }
-}
