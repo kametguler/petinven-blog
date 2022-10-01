@@ -8,7 +8,7 @@ ALLOWED_HOSTS = ["petinven.herokuapp.com"]
 
 SECRET_KEY = 'django-insecure-#sfr+%sg#mxffpue$m-3q(c-a1bakqh^ko!qglc0q@rn31qe)p'
 
-INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps', 'storages']
+INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps', 'storages', 'django_q', ]
 
 META_SITE_PROTOCOL = 'https'
 META_SITE_DOMAIN = "petinven.herokuapp.com"
