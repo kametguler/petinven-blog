@@ -47,8 +47,8 @@ Q_CLUSTER = {
     'cpu_affinity': 1,
     'label': 'Django Q',
     'redis': {
-        'host': os.environ('REDIS_HOST'),
-        'password': os.environ('REDIS_PASSWORD'),
-        'port': os.environ('REDIS_PORT'),
+        'host': os.environ.get('REDIS_HOST'),
+        'password': os.environ.get('REDIS_PASSWORD'),
+        'port': os.environ.get('REDIS_PORT'),
         'db': 0, }
 }
