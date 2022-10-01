@@ -2,7 +2,7 @@
     <ul class="list-inline">
         <li>
             {% if post %}
-                <a href="{{ post.get_facebook_intent }}?u={{ request.build_absolute_uri }}"
+                <a href="{{ post.get_facebook_intent }}"
                    class="fb-button btn btn-primary" target="_blank"
                    data-show-count="false"><i class="fa fa-facebook"></i><span
                         class="down-mobile ml-0">Facebook'ta paylaş</span></a>

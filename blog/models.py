@@ -123,7 +123,7 @@ class Post(ModelMeta, models.Model):
         return tweet_intent
 
     def get_facebook_intent(self):
-        facebook_intent = f"https://facebook.com/sharer.php"
+        facebook_intent = f"https://facebook.com/sharer.php?u{self.slug}"
         return facebook_intent
 
     def get_meta_image(self):
