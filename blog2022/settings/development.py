@@ -4,7 +4,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps']
+INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps', 'django_q',]
 
 SECRET_KEY = 'django-insecure-#sfr+%sg#mxffpue$m-3q(c-a1bakqh^ko!qglc0q@rn31qe)p'
 

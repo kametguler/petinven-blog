@@ -35,3 +35,20 @@ MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 SITE_ID = 1
 
 TEMPLATES[0]["OPTIONS"]["context_processors"].append("blog2022.context_processors.export_vars")
+
+Q_CLUSTER = {
+    'name': 'blog2022',
+    'workers': 8,
+    'recycle': 500,
+    'timeout': 60,
+    'compress': True,
+    'save_limit': 250,
+    'queue_limit': 500,
+    'cpu_affinity': 1,
+    'label': 'Django Q',
+    'redis': {
+        'host': 'ec2-18-200-12-222.eu-west-1.compute.amazonaws.com',
+        'password': 'pa526fe972b7feb86fbb63e5ff5db82b68c784083326ce44cc41c507fe76425fc',
+        'port': 13539,
+        'db': 0, }
+}

@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'meta',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -86,3 +87,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = "kamet1903@gmail.com"
 EMAIL_HOST_PASSWORD = 'gztcaqijimpywogm'
 EMAIL_PORT = '587'
+
