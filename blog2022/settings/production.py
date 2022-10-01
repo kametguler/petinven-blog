@@ -8,7 +8,7 @@ ALLOWED_HOSTS = ["petinven.herokuapp.com"]
 
 SECRET_KEY = 'django-insecure-#sfr+%sg#mxffpue$m-3q(c-a1bakqh^ko!qglc0q@rn31qe)p'
 
-INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps', 'storages', ]
+INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps', 'storages', 'django_crontab', ]
 
 META_SITE_PROTOCOL = 'https'
 META_SITE_DOMAIN = "petinven.herokuapp.com"
@@ -35,3 +35,7 @@ MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 SITE_ID = 1
 
 TEMPLATES[0]["OPTIONS"]["context_processors"].append("blog2022.context_processors.export_vars")
+
+CRONJOBS = [
+    ('*/1 * * * *', 'blog2022.tasks.weekly_email')
+]
