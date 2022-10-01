@@ -6,16 +6,16 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["petinven.herokuapp.com"]
 
-SECRET_KEY = 'django-insecure-#sfr+%sg#mxffpue$m-3q(c-a1bakqh^ko!qglc0q@rn31qe)p'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps', 'storages', 'django_crontab', ]
+INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps', 'storages', ]
 
 META_SITE_PROTOCOL = 'https'
 META_SITE_DOMAIN = "petinven.herokuapp.com"
 
 # AWS SETTINGS
-AWS_ACCESS_KEY_ID = 'AKIAQKSY4ZHKB2CAY647'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = 'petinven-blog'
 
 AWS_S3_FILE_OVERWRITE = False
@@ -35,7 +35,3 @@ MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 SITE_ID = 1
 
 TEMPLATES[0]["OPTIONS"]["context_processors"].append("blog2022.context_processors.export_vars")
-
-CRONJOBS = [
-    ('*/1 * * * *', 'blog2022.tasks.weekly_email')
-]
