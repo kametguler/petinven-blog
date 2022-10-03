@@ -1,6 +1,6 @@
 from .base import *
 
-prod = False
+prod = True
 
 if prod:
     print('ben calistim')
