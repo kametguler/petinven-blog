@@ -1,0 +1,65 @@
+{% extends 'adminpanel/partials/layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <!-- Textual inputs start -->
+        <div class="col-12 mt-5">
+            <div class="card">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <h4 class="header-title">Yeni Post Oluştur</h4>
+
+                        {% if messages %}
+                            {% include 'adminpanel/partials/messages.html' %}
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Başlık</label>
+                            {{ form.title }}
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Kategori <a href="#">(+)</a></label>
+                            {{ form.category }}
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Etiketler <a href="#">(+)</a></label>
+                            {{ form.tags }}
+                        </div>
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">İçerik</label>
+                        </div>
+                        {{ form.content }}
+                        <div class="form-group">
+                            <label class="col-form-label">Açıklama</label>
+                            {{ form.description }}
+                        </div>
+                        <hr>
+                        {% if object.get_meta_image %}
+                            <div class="form-group">
+                                <label class="col-form-label">Mevcut Görsel</label><br>
+                                <img src="{{ object.get_meta_image }}" alt="">
+                            </div>
+                        {% endif %}
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Yükle</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                       name="{{ form.image.name }}">
+                                <label class="custom-file-label" for="inputGroupFile01">Fotoğraf Yükle (*)</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Durumu</label>
+                            {{ form.status }}
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4 mb-4 pl-4 pr-4 float-right">Güncelle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

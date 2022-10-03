@@ -1,0 +1,70 @@
+{% extends 'adminpanel/partials/layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <!-- Textual inputs start -->
+        <div class="col-12 mt-5">
+            <div class="card">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <h4 class="header-title">Hoşgeldin</h4>
+                        <p class="text-muted font-14 mb-4">Burada <code>profil bilgilerini</code> güncelleyebilirsin.
+                        </p>
+
+                        {% if messages %}
+                            {% include 'adminpanel/partials/messages.html' %}
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Hakkımda</label>
+                            {{ form.about }}
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <img src="{{ object.get_profile_image }}" width="70" height="70" alt=""
+                                     class="img-fluid rounded-circle">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Yükle</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                       name="{{ form.profile_photo.name }}">
+                                <label class="custom-file-label" for="inputGroupFile01">Profil Fotoğrafını Seç</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-url-input" class="col-form-label">Website</label>
+                            {{ form.website }}
+                        </div>
+                        <div class="form-group">
+                            <label for="example-url-input" class="col-form-label">Facebook</label>
+                            {{ form.facebook }}
+                        </div>
+                        <div class="form-group">
+                            <label for="example-tel-input" class="col-form-label">Instagram</label>
+                            {{ form.instagram }}
+                        </div>
+                        <div class="form-group">
+                            <label for="example-tel-input" class="col-form-label">Youtube</label>
+                            {{ form.youtube }}
+                        </div>
+                        <div class="form-group">
+                            <label for="example-tel-input" class="col-form-label">Linkedin</label>
+                            {{ form.linkedin }}
+                        </div>
+                        <div class="form-group">
+                            <label for="example-tel-input" class="col-form-label">Twitter</label>
+                            {{ form.twitter }}
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4 mb-4 pl-4 pr-4 float-right">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

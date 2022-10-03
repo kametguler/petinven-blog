@@ -17,7 +17,7 @@
                         <!-- end media -->
                         <div class="blog-meta big-meta text-center">
                             {% include 'partials/social_share.html' %}
-                            <h4><a href="{{ post.get_detailed_url }}" title="">{{ post.title }}</a></h4>
+                            <h4><a href="{{ post.get_absolute_url }}" title="">{{ post.title }}</a></h4>
                             <p>{{ post.content | truncatechars:250 | safe }}</p>
                             <small><a href="{% url 'home' %}?category={{ post.category.slug }}"
                                       title="">{{ post.category }}</a></small>

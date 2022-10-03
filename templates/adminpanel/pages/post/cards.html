@@ -1,0 +1,9 @@
+<div class="card card-bordered">
+    <img class="card-img-top img-fluid" src="{{ object.get_meta_image }}" alt="image">
+    <div class="card-body">
+        <h5 class="title">{{ object.title }}</h5>
+        <p class="card-text">{{ object.description }}
+        </p>
+        <a href="{{ object.get_admin_absolute_url }}" class="btn btn-primary">Düzenle</a>
+    </div>
+</div>

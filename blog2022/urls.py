@@ -25,9 +25,10 @@ sitemaps = {
 }
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps})
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path('admin/', admin.site.urls),
+                  path('admin-panel/', include(('adminpanel.urls', 'adminpanel'), namespace='adminpanel')),
+                  path('', include('blog.urls')),
+                  path('sitemap.xml', sitemap, {'sitemaps': sitemaps})
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404="blog2022.helpers.not_found"
+handler404 = "blog2022.helpers.not_found"

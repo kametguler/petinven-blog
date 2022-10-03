@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 META_USE_TITLE_TAG = True
@@ -16,11 +17,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'adminpanel.apps.AdminpanelConfig',
     'crispy_forms',
     'ckeditor',
     'meta',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,3 +89,8 @@ EMAIL_HOST_USER = "kamet1903@gmail.com"
 EMAIL_HOST_PASSWORD = 'gztcaqijimpywogm'
 EMAIL_PORT = '587'
 
+LOGIN_REDIRECT_URL = '/admin-panel/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/admin-panel/login/'
+
+AUTHENTICATION_BACKENDS = ['adminpanel.auth.module.EmailBackend']

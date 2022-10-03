@@ -1,0 +1,26 @@
+{% extends 'adminpanel/partials/layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 mt-5">
+            <div class="card">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <h4 class="header-title">Yeni Etiket Oluştur</h4>
+
+                        {% if messages %}
+                            {% include 'adminpanel/partials/messages.html' %}
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Etiket Adı</label>
+                            {{ form.name }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4 mb-4 mr-4 float-right">Oluştur</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

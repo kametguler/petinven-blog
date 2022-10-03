@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from django.urls import reverse
+from django.utils.text import slugify
 from meta.models import ModelMeta
 from django.conf import settings
 
@@ -27,7 +28,7 @@ class NewsletterSubscription(models.Model):
 
 
 class Author(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_authors')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='blog_authors')
     about = models.TextField(verbose_name='Hakkında')
     profile_photo = models.ImageField(upload_to='profiles/', null=True, blank=True)
     website = models.URLField(verbose_name='Website Linki', blank=True, null=True)
@@ -38,6 +39,7 @@ class Author(models.Model):
     twitter = models.URLField(verbose_name='Twitter Linki', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Oluşturulma Tarihi')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Güncellenme Tarihi')
+    is_active = models.BooleanField(default=False, verbose_name='Aktif mi ?')
 
     class Meta:
         verbose_name = 'Yazar'
@@ -64,6 +66,22 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    def get_unique_slug(self):
+        slug = slugify(self.title.replace('ı', 'i'))
+        unique_slug = slug
+        counter = 1
+        while Category.objects.filter(slug=unique_slug).exists():
+            unique_slug = f'{slug}-{counter}'
+            counter += 1
+        return unique_slug
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.slug = self.get_unique_slug()
+            return super(Category, self).save(*args, **kwargs)
+        else:
+            return super(Category, self).save(*args, **kwargs)
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=255, verbose_name='Etiket', unique=True)
@@ -77,6 +95,22 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_unique_slug(self):
+        slug = slugify(self.name.replace('ı', 'i'))
+        unique_slug = slug
+        counter = 1
+        while Tag.objects.filter(slug=unique_slug).exists():
+            unique_slug = f'{slug}-{counter}'
+            counter += 1
+        return unique_slug
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.slug = self.get_unique_slug()
+            return super(Tag, self).save(*args, **kwargs)
+        else:
+            return super(Tag, self).save(*args, **kwargs)
 
 
 class HitCount(models.Model):
@@ -92,9 +126,10 @@ class HitCount(models.Model):
 
 
 class Post(ModelMeta, models.Model):
-    title = models.CharField(max_length=255, verbose_name='Başlık', unique=True)
-    slug = models.SlugField(max_length=255, unique=True)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='blog_posts', verbose_name="Yazarı")
+    title = models.CharField(max_length=255, verbose_name='Başlık')
+    slug = models.SlugField(max_length=255)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='blog_posts',
+                               verbose_name="Yazarı")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='blog_posts',
                                  verbose_name="Kategorisi", null=True)
     tags = models.ManyToManyField(Tag, related_name='blog_posts', verbose_name='Etiketler')
@@ -115,6 +150,22 @@ class Post(ModelMeta, models.Model):
         'image': 'get_meta_image',
     }
 
+    def get_unique_slug(self):
+        slug = slugify(self.title.replace('ı', 'i'))
+        unique_slug = slug
+        counter = 1
+        while Post.objects.filter(slug=unique_slug).exists():
+            unique_slug = f'{slug}-{counter}'
+            counter += 1
+        return unique_slug
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.slug = self.get_unique_slug()
+            return super(Post, self).save(*args, **kwargs)
+        else:
+            return super(Post, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.title
 
@@ -123,19 +174,18 @@ class Post(ModelMeta, models.Model):
         return tweet_intent
 
     def get_facebook_intent(self):
-        facebook_intent = f"https://facebook.com/sharer.php?u={settings.META_SITE_DOMAIN}{self.get_detailed_url()}"
-        print(facebook_intent)
+        facebook_intent = f"https://facebook.com/sharer.php?u={settings.META_SITE_DOMAIN}{self.get_absolute_url()}"
         return facebook_intent
 
     def get_meta_image(self):
         if self.image:
             return self.image.url
 
-    def get_detailed_url(self):
-        return reverse('post-detail', kwargs={'slug': self.slug})
-
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'slug': self.slug})
+
+    def get_admin_absolute_url(self):
+        return reverse('adminpanel:edit-post', kwargs={'slug': self.slug})
 
     @property
     def get_hit_count(self):

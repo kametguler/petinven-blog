@@ -123,7 +123,7 @@
                                     <div class="col-lg-6">
                                         <div class="blog-box">
                                             <div class="post-media">
-                                                <a href="{{ also.get_detailed_url }}" title="">
+                                                <a href="{{ also.get_absolute_url }}" title="">
                                                     <img src="{{ also.get_meta_image }}" alt="" class="img-fluid">
                                                     <div class="hovereffect">
                                                         <span class=""></span>
@@ -131,7 +131,7 @@
                                                 </a>
                                             </div><!-- end media -->
                                             <div class="blog-meta">
-                                                <h4><a href="{{ also.get_detailed_url }}" title="">{{ also.title }}</a>
+                                                <h4><a href="{{ also.get_absolute_url }}" title="">{{ also.title }}</a>
                                                 </h4>
                                                 <small><a href="{% url 'home' %}?category={{ also.category.slug }}"
                                                           title="Kategorisi">{{ also.category }}</a></small>

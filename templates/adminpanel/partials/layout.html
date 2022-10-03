@@ -1,0 +1,17 @@
+{% include 'adminpanel/partials/header.html' %}
+
+{% include 'adminpanel/partials/loader.html' %}
+<div class="page-container">
+    {% include 'adminpanel/partials/left_sidebar.html' %}
+    <div class="main-content">
+        {% include 'adminpanel/partials/main_content/header.html' %}
+        <div class="main-content-inner">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+    {% include 'adminpanel/partials/footer1.html' %}
+</div>
+
+{% include 'adminpanel/partials/footer.html' %}

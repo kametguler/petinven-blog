@@ -1,0 +1,36 @@
+{% extends 'adminpanel/partials/layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <!-- Dark table start -->
+        <div class="col-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Etiket Listesi</h4>
+                    <div class="data-tables datatable-dark">
+                        <table id="dataTable3" class="text-center">
+                            <thead class="text-capitalize">
+                            <tr>
+                                <th>Etiket Adı</th>
+                                <th>Slug</th>
+                                <th>Oluşturulma Tarihi</th>
+                                <th>Güncellenme Tarihi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for object in object_list %}
+                                <tr>
+                                    <td>{{ object.name }}</td>
+                                    <td>{{ object.slug }}</td>
+                                    <td>{{ object.created_at }}</td>
+                                    <td>{{ object.updated_at }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

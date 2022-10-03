@@ -1,0 +1,25 @@
+{% extends 'adminpanel/partials/layout.html' %}
+
+{% block content %}
+    <form method="get">
+        <div class="form-group">
+            <label class="col-form-label">Filtre</label>
+            <select name="status" class="custom-select-lg">
+                <option {% if status == "hepsi" %}selected{% endif %} value="hepsi">Hepsi</option>
+                <option {% if status == "yayinda" %}selected{% endif %} value="yayinda">Yayında</option>
+                <option {% if status == "taslak" %}selected{% endif %} value="taslak">Taslak</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Uygula</button>
+        </div>
+    </form>
+    <div class="card-area">
+        <div class="row">
+            {% for object in object_list %}
+                <div class="col-lg-4 col-md-6 mt-5">
+                    {% include 'adminpanel/pages/post/cards.html' %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% include 'adminpanel/partials/pagination.html' %}
+{% endblock %}

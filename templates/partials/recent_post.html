@@ -1,5 +1,5 @@
 {% for recent_post in recent_posts %}
-    <a href="{{ recent_post.get_detailed_url }}"
+    <a href="{{ recent_post.get_absolute_url }}"
        class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="w-100 justify-content-between">
             <img src="{{ recent_post.get_meta_image }}" alt="" class="img-fluid float-left">
