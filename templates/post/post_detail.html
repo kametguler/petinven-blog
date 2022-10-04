@@ -63,9 +63,6 @@
                                     {% if object.author.profile_photo %}
                                         <img src="{{ object.author.get_profile_image }}" alt=""
                                              class="img-fluid rounded-circle">
-                                    {% else %}
-                                        <img src="{% url 'profiles/avatar.png' %}" alt=""
-                                             class="img-fluid rounded-circle">
                                     {% endif %}
                                 </div><!-- end col -->
 

@@ -30,7 +30,7 @@ class NewsletterSubscription(models.Model):
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='blog_authors')
     about = models.TextField(verbose_name='Hakkında')
-    profile_photo = models.ImageField(upload_to='profiles/', null=True, blank=True)
+    profile_photo = models.ImageField(upload_to='profiles/', default='profiles/avatar.png', null=True, blank=True)
     website = models.URLField(verbose_name='Website Linki', blank=True, null=True)
     facebook = models.URLField(verbose_name='Facebook Linki', blank=True, null=True)
     instagram = models.URLField(verbose_name='Instagram Linki', blank=True, null=True)
