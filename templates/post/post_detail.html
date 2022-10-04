@@ -44,7 +44,9 @@
                             <div class="tag-cloud-single">
                                 <span>Etiketler</span>
                                 {% for tag in post.tags.all %}
-                                    <small><a href="{% url 'home' %}?tag={{ tag.slug }}"
+                                    <small><a href="{% url 'home' %}?tag=
+
+                                            {{ tag.slug }}{% for key, value in request.GET.items %}{% if key != 'tag' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"
                                               title="">{{ tag }}</a></small>
                                 {% endfor %}
 
@@ -104,6 +106,10 @@
                                                title="Website"><i
                                                     class="fa fa-link"></i></a>
                                         {% endif %}
+                                        <a href="{{ object.author.user.email }}" data-toggle="tooltip" target="_blank"
+                                           data-placement="bottom"
+                                           title="Email"><i
+                                                class="fa fa-envelope"></i></a>
 
                                     </div><!-- end social -->
 

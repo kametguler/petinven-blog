@@ -16,7 +16,7 @@ class HomePage(ListView):
     queryset = Post.objects.filter(status=1)
     model = Post
     template_name = 'index.html'
-    paginate_by = 10
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = super(HomePage, self).get_queryset()

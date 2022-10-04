@@ -7,16 +7,19 @@
                         <a class="page-link" href="?page=1">İlk</a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Önceki</a>
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Önceki</a>
                     </li>
                 {% endif %}
-                <li class="page-item"><p class="page-link active" style="background: #1d1e1f!important; color:#FFFFFF !important;">{{ page_obj.number }}</p></li>
+                <li class="page-item"><p class="page-link active"
+                                         style="background: #1d1e1f!important; color:#FFFFFF !important;">{{ page_obj.number }}</p>
+                </li>
                 {% if page_obj.has_next %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">İleri</a>
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">İleri</a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Son</a>
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}
+                                {% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Son</a>
                     </li>
                 {% endif %}
             </ul>

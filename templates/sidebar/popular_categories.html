@@ -3,8 +3,9 @@
     <div class="link-widget">
         <ul>
             {% for popular_category in popular_categories %}
-                <li><a href="?category={{ popular_category.slug }}">{{ popular_category }} <span>({{ popular_category.posts_count }})</span></a></li>
+                <li><a href="?category={{ popular_category.slug }}{% for key, value in request.GET.items %}{% if key != 'category' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ popular_category }} <span>({{ popular_category.posts_count }})</span></a></li>
             {% endfor %}
         </ul>
     </div><!-- end link-widget -->
 </div><!-- end widget -->
+

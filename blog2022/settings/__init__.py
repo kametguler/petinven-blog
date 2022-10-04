@@ -1,10 +1,8 @@
 from .base import *
 
-prod = True
+prod = os.getenv("ENV_VAR", 'False').lower() in ('true', '1', 't', "True")
 
 if prod:
-    print('ben calistim')
     from .production import *
 else:
-    print('ben calistim dev')
     from .development import *
