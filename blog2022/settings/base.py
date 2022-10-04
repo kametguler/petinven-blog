@@ -52,7 +52,6 @@ TEMPLATES = [
         },
     },
 ]
-TEMPLATES[0]["OPTIONS"]["context_processors"].append("")
 
 WSGI_APPLICATION = 'blog2022.wsgi.application'
 
