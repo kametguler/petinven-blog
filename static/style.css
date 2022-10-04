@@ -608,7 +608,7 @@ div.tab button:hover {
 
 .footer.wb .hovereffect {
     opacity: 0.1;
-    background-color: rgba(0, 0, 0, 0.0.1);
+    background-color: rgba(0, 0, 0, 0.0 .1);
 }
 
 .demos h4 a {
@@ -679,7 +679,7 @@ div.tab button:hover {
 }
 
 .dmtop {
-    background-color: #111111;
+    background-color: #FFFFFF;
     background-image: url(images/arrow.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -1172,7 +1172,7 @@ hr.invis3 {
     background: -moz-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 30%);
     background: -webkit-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 30%);
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 30%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000', GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=1);
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -ms-transition: all .3s ease-in-out;
@@ -1228,7 +1228,7 @@ hr.invis3 {
     background: -moz-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 50%);
     background: -webkit-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 50%);
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 50%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000', GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=1);
 }
 
 .post-media:hover .hovereffect span::before,
