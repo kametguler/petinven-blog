@@ -19,7 +19,4 @@ DATABASES = {
     }
 }
 
-TEMPLATES[0]["OPTIONS"]["context_processors"].append("adminpanel.context_processors.get_query_param")
 SITE_ID = 1
-
-

@@ -47,10 +47,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'adminpanel.context_processors.get_query_param',
             ],
         },
     },
 ]
+TEMPLATES[0]["OPTIONS"]["context_processors"].append("")
 
 WSGI_APPLICATION = 'blog2022.wsgi.application'
 
