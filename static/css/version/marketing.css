@@ -298,13 +298,16 @@ h6 {
     #cta h2 {
         font-size: 34px;
     }
+
     .page-wrapper {
         padding: 3rem 1rem;
     }
+
     .blog-title-area h3 {
         font-size: 21px;
         line-height: 1.4;
     }
+
     #cta .lead {
         font-size: 16px;
     }
@@ -328,12 +331,15 @@ h6 {
     #cta .lead {
         margin: 0 0rem 2rem 0;
     }
+
     #cta .newsletter-widget.text-center {
         margin-top: 2rem;
     }
+
     .footer .widget {
         margin: 2rem 0;
     }
+
     .navbar-toggleable-md .navbar-nav .nav-link {
         padding: 1rem 0.6rem;
     }
@@ -344,13 +350,14 @@ a:focus,
 .breadcrumb-item a,
 .fa-star,
 .pp a,
+    /*burası blog list a taglarinin hover renkleri*/
 .blog-list-widget small {
     color: #f9ca27 !important;
 }
 
 .market-header .navbar,
 .newsletter-widget.text-center {
-    border-color: #f9ca27;
+    border-color: #FFFFFF;
 }
 
 .color-yellow a,
@@ -362,5 +369,5 @@ a:focus,
 .dropdown-item:hover,
 .bg-inverse {
     color: #111111 !important;
-    background-color: #f9ca27 !important;
+    background-color: #FFFFFF !important;
 }
