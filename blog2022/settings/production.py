@@ -4,7 +4,7 @@ import os
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["petinven.herokuapp.com"]
+ALLOWED_HOSTS = ["petinven.herokuapp.com", "www.petinven.com", "petinven.com"]
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
