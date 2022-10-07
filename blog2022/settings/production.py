@@ -11,7 +11,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 INSTALLED_APPS += ['django.contrib.sites', 'django.contrib.sitemaps', 'storages', ]
 
 META_SITE_PROTOCOL = 'https'
-META_SITE_DOMAIN = "petinven.com"
+META_SITE_DOMAIN = "www.petinven.com"
 
 # AWS SETTINGS
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
