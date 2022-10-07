@@ -170,7 +170,7 @@ class Post(ModelMeta, models.Model):
         return self.title
 
     def get_tweet_intent(self):
-        tweet_intent = f"https://twitter.com/intent/tweet?text={self.title}"
+        tweet_intent = f"https://twitter.com/intent/tweet?text={self.title}&url={settings.META_SITE_DOMAIN}{self.get_absolute_url()}"
         return tweet_intent
 
     def get_facebook_intent(self):
