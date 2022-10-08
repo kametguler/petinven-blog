@@ -29,10 +29,10 @@
                         </div><!-- end title -->
 
                         <div class="single-post-media">
-                            <img src="{{ object.get_meta_image }}" alt="" class="img-fluid">
+                            <img src="{{ object.get_meta_image }}" class="img-fluid">
                         </div><!-- end media -->
 
-                        <div class="blog-content">
+                        <div class="blog-content single-post-media">
                             <div class="pp">
                                 {{ object.content | safe }}
 
@@ -45,6 +45,7 @@
                                 <span>Etiketler</span>
                                 {% for tag in post.tags.all %}
                                     <small><a href="{% url 'home' %}?tag=
+
 
                                             {{ tag.slug }}{% for key, value in request.GET.items %}{% if key != 'tag' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"
                                               title="">{{ tag }}</a></small>

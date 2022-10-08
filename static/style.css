@@ -912,6 +912,7 @@ div.tab button:hover {
 
 .single-post-media img {
     width: 100%;
+    height: auto;
 }
 
 .blog-title-area {
