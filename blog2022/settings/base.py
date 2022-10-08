@@ -27,15 +27,19 @@ INSTALLED_APPS = [
     'meta',
 ]
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
+        'height': 500,
         'extraPlugins': ','.join(
             [
-                "image2"
+                "image2", "codesnippet",
             ]
         ),
     },
+
 }
 
 MIDDLEWARE = [
