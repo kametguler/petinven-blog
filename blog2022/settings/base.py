@@ -35,7 +35,7 @@ CKEDITOR_CONFIGS = {
         'height': 500,
         'extraPlugins': ','.join(
             [
-                "image2", "codesnippet",
+                "image2", "codesnippet", "youtube"
             ]
         ),
     },
